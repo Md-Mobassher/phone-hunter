@@ -16,15 +16,15 @@
     <header id="header" class="container">
         <h2 class="text-center text-primary my-3">Phone Trace</h2>
         <div>
-            <div class="input-group my-2 w-50 m-auto">
-                <input id="search-box" type="text" class="form-control" placeholder="Search your phone" aria-label="Recipient's username" aria-describedby="button-addon2">
+            <div class="input-group my-3 w-50 m-auto">
+                <input id="search-box" type="text" class="form-control" placeholder="Find your phone" aria-label="Recipient's username" aria-describedby="button-addon2">
                 <button id="search-btn" onclick="allPhones()" class="btn btn-outline-secondary bg-primary text-white" type="button">Search</button>
-              </div>
+            </div>
         </div>
     </header>
     
     <!-- main area  -->
-    <main class="container my-5">
+    <main class="container py-5">
         <!-- phone details  -->
         <section id="phone-details" class="w-75 m-auto">
             <div class="row g-3 justify-content-center align-items-center">
@@ -42,11 +42,9 @@
         </section>
         
         <!-- all phone  -->
-        <section id="all-phone" class="mt-5">
-            <div class="row g-4">
-                <div id="phones-container" class="col-md-4 p-4">
+        <section id="all-phone">
+            <div id="phones-container"  class="row g-5 justify-content-center align-items-center mt-">
                     
-                </div>
             </div>
         </section>
     </main>
