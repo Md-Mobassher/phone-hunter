@@ -9,6 +9,7 @@ const toggle = (id, displayStyle) => {
 // search phone 
 const allPhones = () => {
     toggle('spinner','block');
+    toggle('no-result','none');
     const searchValue = document.getElementById('search-box').value;
     const url = `https://openapi.programming-hero.com/api/phones?search=${searchValue}`
     
@@ -24,7 +25,7 @@ const displayPhones = (phones) =>{
     phoneContainer.textContent = '';
     phoneImage.textContent = '';
     phoneInfo.textContent = '';
-    console.log(phones);
+    //console.log(phones);
 
     if (phones.length == 0){           
         toggle('spinner','none');
@@ -32,20 +33,20 @@ const displayPhones = (phones) =>{
     }
 
     for (const phone of phones){ 
-        // console.log(phone);
-        toggle('spinner','none');
-        toggle('no-result','none');
-        phones.forEach( phone => {
+        // console.log(phone); 
+        phones?.forEach( phone => {
            const div = document.createElement('div');
            div.classList = "col-md-4 mx-auto d-flex flex-column justifu-content-center align-items-center";
            div.innerHTML = `
                 <img class="img-fluid mb-3" src="${phone.image}" alt="">
-                <h4>Name: ${phone.phone_name}</h4>
-                <h4>Brand: ${phone.brand}</h4>
+                <h5><b>Name:</b> ${phone.phone_name}</h5>
+                <h5><b>Brand:</b> ${phone.brand}</h5>
                 <button onclick="phoneDetails('${phone.slug}')" class="btn-primary text-white mx-auto py-2 px-4 border-0 rounded-3 mt-2">Details</button>
            `;
            phoneContainer.appendChild(div);          
-        })     
+        })   
+        toggle('spinner','none');
+        toggle('no-result','none');  
     }
 }
 
@@ -64,7 +65,7 @@ const displayPhoneDetails = info => {
     `
     phoneInfo.innerHTML = `
         <h5><b>Name:</b> ${info.name}</h5>
-        <h5><b>Release date:</b> ${info.releaseDate}</h5>
+        <h5><b>Release date:</b> <span class="text-warning">${info.releaseDate ? info.releaseDate : "No release date found"}</span></h5>
         <h5><b>Main feature:</b></h5>
             <h6><b>Storage:</b> ${info.mainFeatures.storage} </h6>  
             <h6><b>Display Size:</b> ${info.mainFeatures.displaySize} </h6>  
