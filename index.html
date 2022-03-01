@@ -15,16 +15,21 @@
     <!-- header area  -->
     <header id="header" class="container">
         <h2 class="text-center text-primary my-3">Phone Trace</h2>
-        <div>
-            <div class="input-group my-3 w-50 m-auto">
-                <input id="search-box" type="text" class="form-control" placeholder="Find your phone" aria-label="Recipient's username" aria-describedby="button-addon2">
-                <button id="search-btn" onclick="allPhones()" class="btn btn-outline-secondary bg-primary text-white" type="button">Search</button>
-            </div>
+        <div class="input-group my-3 w-50 m-auto">
+            <input id="search-box" type="text" class="form-control" placeholder="Find your phone" aria-label="Recipient's username" aria-describedby="button-addon2">
+            <button id="search-btn" onclick="allPhones()" class="btn btn-outline-secondary bg-primary text-white" type="button">Search</button>               
         </div>
     </header>
     
     <!-- main area  -->
     <main class="container py-4">
+        <!-- spinner  -->
+        <div class="text-center">
+            <span  id="spinner"  class="text-primary fw-bold fs-4">Loading...</span>
+            <h4 id="no-result" class="text-primary">No result found</h4>
+            <h4 id="empty" class="text-primary">Please enter a phone name</h4>
+        </div>
+
         <!-- phone details  -->
         <section class="w-75 m-auto">
             <div class="row g-3 d-flex justify-content-center align-items-center h-100">
@@ -45,6 +50,7 @@
         </section>
     </main>
 
+   
     <!-- main js  -->
     <script src="./js/app.js"></script>
 </body>

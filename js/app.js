@@ -1,25 +1,41 @@
 const phoneImage = document.getElementById('phone-image');
 const phoneInfo = document.getElementById('phone-info');
 
+// toggle function 
+const toggle = (id, displayStyle) => {
+    document.getElementById(id).style.display = displayStyle;
+}
+
+// search phone 
 const allPhones = () => {
+    toggle('spinner','block');
     const searchValue = document.getElementById('search-box').value;
     const url = `https://openapi.programming-hero.com/api/phones?search=${searchValue}`
     
     fetch(url)
     .then ((res) => res.json())
-    .then ((data) => displayPhones(data.data));
+    .then ((data) => displayPhones(data.data));  
 }
 
-const displayPhones = (phones) =>{
-    document.getElementById('search-box').value = '';
-    for (const phone of phones){
-        const phoneContainer = document.getElementById('phones-container');
-        phoneContainer.textContent = '';
-        phoneImage.textContent = '';
-        phoneInfo.textContent = '';
+// display phone 
+const displayPhones = (phones) =>{ 
+    const phoneContainer = document.getElementById('phones-container');
+    document.getElementById('search-box').value = ''; 
+    phoneContainer.textContent = '';
+    phoneImage.textContent = '';
+    phoneInfo.textContent = '';
+    console.log(phones);
 
+    if (phones.length == 0){           
+        toggle('spinner','none');
+        toggle('no-result','block');
+    }
+
+    for (const phone of phones){ 
+        // console.log(phone);
+        toggle('spinner','none');
+        toggle('no-result','none');
         phones.forEach( phone => {
-            //console.log(phone);
            const div = document.createElement('div');
            div.classList = "col-md-4 mx-auto d-flex flex-column justifu-content-center align-items-center";
            div.innerHTML = `
@@ -28,12 +44,13 @@ const displayPhones = (phones) =>{
                 <h4>Brand: ${phone.brand}</h4>
                 <button onclick="phoneDetails('${phone.slug}')" class="btn-primary text-white mx-auto py-2 px-4 border-0 rounded-3 mt-2">Details</button>
            `;
-           phoneContainer.appendChild(div);
-        })
-        //console.log(phone);
+           phoneContainer.appendChild(div);          
+        })     
     }
 }
 
+
+// phone details 
 const phoneDetails = (id) => {
     const url = `https://openapi.programming-hero.com/api/phone/${id}`;
     fetch(url)
@@ -57,7 +74,5 @@ const displayPhoneDetails = info => {
             <h6><b>WLAN:</b> ${info.others.WLAN} </h6>
             <h6><b>Bluetooth:</b> ${info.others.Bluetooth} </h6>
             <h6><b>GPS:</b> ${info.others.GPS} </h6>
-    `;
-
-    
+    `; 
 }
