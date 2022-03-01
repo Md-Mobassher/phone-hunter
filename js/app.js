@@ -1,3 +1,6 @@
+const phoneImage = document.getElementById('phone-image');
+const phoneInfo = document.getElementById('phone-info');
+
 const allPhones = () => {
     const searchValue = document.getElementById('search-box').value;
     const url = `https://openapi.programming-hero.com/api/phones?search=${searchValue}`
@@ -8,8 +11,12 @@ const allPhones = () => {
 }
 
 const displayPhones = (phones) =>{
+    document.getElementById('search-box').value = '';
     for (const phone of phones){
         const phoneContainer = document.getElementById('phones-container');
+        phoneContainer.textContent = '';
+        phoneImage.textContent = '';
+        phoneInfo.textContent = '';
 
         phones.forEach( phone => {
             //console.log(phone);
@@ -35,11 +42,22 @@ const phoneDetails = (id) => {
 }
 
 const displayPhoneDetails = info => {
-    console.log(info);
-    document.getElementById('phone-image').innerHTML = `
+    phoneImage.innerHTML = `
         <img src="${info.image}" alt="">
     `
-    const phoneInfo = document.getElementById('phone-info');
+    phoneInfo.innerHTML = `
+        <h5><b>Name:</b> ${info.name}</h5>
+        <h5><b>Release date:</b> ${info.releaseDate}</h5>
+        <h5><b>Main feature:</b></h5>
+            <h6><b>Storage:</b> ${info.mainFeatures.storage} </h6>  
+            <h6><b>Display Size:</b> ${info.mainFeatures.displaySize} </h6>  
+            <h6><b>Chipset:</b> ${info.mainFeatures.chipSet} </h6>  
+            <h6><b>Memory:</b> ${info.mainFeatures.memory} </h6>     
+        <h5><b>Sensor info:</b></h5>
+            <h6><b>WLAN:</b> ${info.others.WLAN} </h6>
+            <h6><b>Bluetooth:</b> ${info.others.Bluetooth} </h6>
+            <h6><b>GPS:</b> ${info.others.GPS} </h6>
+    `;
 
     
 }
