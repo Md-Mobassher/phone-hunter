@@ -31,5 +31,15 @@ const phoneDetails = (id) => {
     const url = `https://openapi.programming-hero.com/api/phone/${id}`;
     fetch(url)
     .then((res) => res.json())
-    .then((data) => console.log(data));
+    .then((data) => displayPhoneDetails(data.data));
+}
+
+const displayPhoneDetails = info => {
+    console.log(info);
+    document.getElementById('phone-image').innerHTML = `
+        <img src="${info.image}" alt="">
+    `
+    const phoneInfo = document.getElementById('phone-info');
+
+    
 }
