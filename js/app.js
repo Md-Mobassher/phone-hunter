@@ -59,12 +59,12 @@ const phoneDetails = (id) => {
     .then((data) => displayPhoneDetails(data.data));
 }
 
-const displayPhoneDetails = info => {
+const displayPhoneDetails = info => { 
     phoneImage.innerHTML = `
         <img src="${info.image}" alt="">
     `
     phoneInfo.innerHTML = `
-        <h5><b>Name:</b> ${info.name}</h5>
+        <h5><b>Name:</b> <span class="text-primary">${info.name}</span></h5>
         <h5><b>Release date:</b> <span class="text-warning">${info.releaseDate ? info.releaseDate : "No release date found"}</span></h5>
         <h5><b>Main feature:</b></h5>
             <h6><b>Storage:</b> ${info.mainFeatures.storage} </h6>  
@@ -77,3 +77,4 @@ const displayPhoneDetails = info => {
             <h6><b>GPS:</b> ${info.others.GPS} </h6>
     `; 
 }
+
