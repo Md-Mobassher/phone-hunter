@@ -5,7 +5,7 @@
 
 
 ## Description:
-This is an HTML, CSS, and JavaScript project. 
+- This is an HTML, CSS, and JavaScript project. 
 
 
 ## Technology: HTML, CSS, JavaScript
