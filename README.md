@@ -4,7 +4,7 @@
 ## Live side Link: https://phone-hunter-mobassher.netlify.app/
 
 
-## Description:
+## Project Details:
 - This is an HTML, CSS, and JavaScript project. 
 
 
